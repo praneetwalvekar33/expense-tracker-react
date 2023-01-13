@@ -4,12 +4,23 @@
 :root{
     --font-roboto: "Roboto Slab", serif;
     --font-raleway: "Raleway", sans-serif;
-    --background-color: #000000;
+    --primary-color: #000000;
+    --header-color: #7CE0FF;
 }
 
 body{
     margin: 0;
     height: 0;
     font-family: var(--font-roboto);
-    background: var(--background-color);
+    background: var(--primary-color);
+    box-sizing: border-box;
+}
+
+.cards-container{
+    display: grid;
+    gap: 200px;
+    grid-template-columns: repeat(2, 258px);
+    justify-content: center;
+
+    margin-top: 40px;
 }

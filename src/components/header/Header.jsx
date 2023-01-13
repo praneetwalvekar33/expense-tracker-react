@@ -6,7 +6,7 @@ import './Header.css';
 const Header = () => {
 
     return (
-        <div>
+        <div className="header-container">
             Expense Tracker
         </div>
     )
