@@ -1,0 +1,104 @@
+.add-new-transaction-form{
+    max-width: 1100px;
+    min-height: 325px;
+    margin-top: 1rem;
+    
+    background: #050505;
+    border: 5px solid #3EA2C1;
+    border-radius: 12px;
+}
+
+.add-new-transaction-form .form-header{
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 0%;
+
+    font-family: var(--font-raleway);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+
+
+    color: #FFFFFF;
+}
+
+.add-new-transaction-form .column{
+    display: grid;
+    grid-template-columns: repeat(2, 540px);
+    justify-content: space-between;    
+}
+
+.add-new-transaction-form .row{
+    margin-left: 25px;
+}
+
+.add-new-transaction-form .first-row{ 
+    margin-top: 1rem;
+}
+
+.add-new-transaction-form .second-row{
+    margin-top: 30px;
+}
+
+.add-new-transaction-form .label{
+    color: #FFFFFF;
+}
+
+.add-new-transaction-form .input{
+    width: 300px;
+    height: 60px;
+    margin-right: 150px;
+    padding: 0rem 1rem;
+
+    color: #FFFFFF;
+    font-family: var(--font-roboto);
+    font-style: normal;
+    font-size: 20px;
+    background: #313131;
+    border: 0;
+    border-radius: 12px;
+}
+
+.add-new-transaction-form .input-component{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.add-new-transaction-form .first-row .type-input{
+    width: 336px;
+    margin-right:135px;
+    padding: 0rem 1rem;
+}
+
+.add-new-transaction-form .second-row .amount-input{
+    width: 340px;
+    margin-left: 5px;
+    margin-right: 135px;
+}
+
+.add-new-transaction-form .submit-input{
+    width: 300px;
+    border: 0px;
+    border-radius: 12px;
+    padding: 22px 50px;
+    margin: 1rem;
+    margin-left: 730px;
+
+    font-family: var(--font-roboto);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+
+    color: #FFFFFF;
+    background: #3EA2C1;
+}
+
+.error-message{
+    margin: 0.1em;
+    color: red;    
+}
+
+
+
