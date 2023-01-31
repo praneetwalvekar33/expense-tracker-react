@@ -1,13 +1,20 @@
-.entry-header-container{
+.user-entry-container{
     display: flex;
     justify-content: space-evenly;
     padding: 1rem;
-    margin-top: 1rem;
-    border-left: 12px solid #3EA2C1;
+    margin-top: 0.45rem;
     
 
-    background: #3EA2C1;
+    background: #313131;
     border-radius: 12px;
+}
+
+.entry-type-debit{
+    border-left: 12px solid #B00000;
+}
+
+.entry-type-credit{
+    border-left: 12px solid #107100;
 }
 
 .color{
