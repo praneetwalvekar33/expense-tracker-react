@@ -5,12 +5,13 @@ import { getTransactionData } from '../../utils/apiCallUtility';
 import UserTransactionEntry from '../userTransactionEntry/UserTransactionEntry';
 
 const TransactionList = () =>{
-    const { data } = useQuery(["transactionData"],getTransactionData());
+    const {data} = useQuery(["transactionData"],()=> getTransactionData());
+
+    console.log(getTransactionData());
 
     return(
         <div>
             {data?.map((transactionEntry)=>{
-                console.log(transactionEntry);
                 return (
                     <UserTransactionEntry transaction={transactionEntry} key={transactionEntry.id}/>
                 );
