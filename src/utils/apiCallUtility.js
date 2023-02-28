@@ -1,11 +1,19 @@
-import { Axios } from "axios";
+import axios from "axios";
 
-const transactionApi = Axios.create({
+const transactionApi = axios.create({
     baseURL:"http://localhost:8080/eTracker"
 });
 
 export const getTransactionData = async() => {
-    return await Axios.get("/transactions").then((res)=>res.data);
+    return await transactionApi.get("/transactions").then((res)=>res.data);
+}
+
+export const getTotalBalanceData = async() => {
+    return await transactionApi.get("/totalIncome");
+}
+
+export const getTotalExpenseData = async() => {
+    return await transactionApi.get("/totalExpense");
 }
 
 export default transactionApi;
