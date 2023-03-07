@@ -1,26 +1,34 @@
-import { React } from 'react';
-import { QueryClientProvider,QueryClient } from '@tanstack/react-query'
+import { React,useState } from 'react';
+import { QueryClientProvider,QueryClient } from '@tanstack/react-query';
 
+import { transactionAddedContext } from './utils/contextUtil';
 import Header from './components/header/Header';
 import Card from './components/card/Card';
 import AddNewTransactionForm from './components/addNewTransactionFrom/AddNewTransactionForm';
 import TransactionEntryHeader from './components/transactionEntryHeader/TransactionEntryHeader';
+import ResponseSnackbar from './components/responseSnackbar/ResponseSnackbar';
 import './App.css'
 import TransactionList from './components/transactionList/TransactionList';
 
 const App = () => {
 
     const client = new QueryClient();
+    const [transactionAddedResponse,setTransactionAddedResponse] = useState(false);
     
     return (
-        <div className="app">
+        <div className="app"> 
             <QueryClientProvider client={client}>
+                <transactionAddedContext.Provider value={transactionAddedResponse}>
+                    <ResponseSnackbar/>
+                </transactionAddedContext.Provider>
                 <Header/>
                 <div className="cards-container">
                     <Card header="Total Balance" value={1500} balOrExp={true}/>
                     <Card header="Total Expense" value={34000} balOrExp={false}/>
                 </div>
-                <AddNewTransactionForm className="new-transaction" />
+                <transactionAddedContext.Provider value={setTransactionAddedResponse}>
+                    <AddNewTransactionForm className="new-transaction" />
+                </transactionAddedContext.Provider>
                 <TransactionEntryHeader />
                 <TransactionList/>
             </QueryClientProvider>

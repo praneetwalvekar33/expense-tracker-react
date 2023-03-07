@@ -4,7 +4,7 @@ import './TransactionEntryHeader.css';
 
 const TransactionEntryHeader = ()=>{
     return(
-        <div className="entry-header-container">
+        <div className="entry-header-container ">
             <div className="color">No</div>
             <div className="color name-margin">Name</div>
             <div className="color margin-right">Date</div>

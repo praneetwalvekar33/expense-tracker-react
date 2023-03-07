@@ -7,8 +7,6 @@ import UserTransactionEntry from '../userTransactionEntry/UserTransactionEntry';
 const TransactionList = () =>{
     const {data} = useQuery(["transactionData"],()=> getTransactionData());
 
-    console.log(getTransactionData());
-
     return(
         <div>
             {data?.map((transactionEntry)=>{
