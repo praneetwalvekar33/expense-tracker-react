@@ -1,14 +1,40 @@
-import React  from "react";
+import { React,useContext }  from "react";
 import { useForm } from "react-hook-form";
+import { useMutation,useQueryClient } from "@tanstack/react-query";
+import { addNewUserTransaction } from "../../utils/apiCallUtility"
+import { transactionAddedContext } from "../../utils/contextUtil"
 
 import "./AddNewTransactionForm.css"
 
 const AddNewTransactionForm = () => {
-    const {register,handleSubmit, formState:{ errors }} = useForm();
+    const {register,handleSubmit,reset,formState:{ errors }} = useForm({
+        defaultValues: {
+            transactionsName:"",
+            transactionDate:"",
+            transactionAmount: null ,
+            transactionType: null
+        }}
+    );
+
+    const queryClient = useQueryClient();
+
+    const addMutation = useMutation(addNewUserTransaction,{
+        onSuccess:()=>{
+            queryClient.invalidateQueries();
+            reset();
+            setTransactionAddedState(true);
+            setTimeout(()=>{
+                setTransactionAddedState(false);
+            },3000)
+            
+        }
+    });
+
+    const setTransactionAddedState = useContext(transactionAddedContext);
 
     const submit = (data) =>{
-        console.log(errors.transactionName);
-        console.log(data)
+        console.log(data);
+        addMutation.mutate(data);
     }
     
     return(
@@ -35,17 +61,17 @@ const AddNewTransactionForm = () => {
 
             <div className="second-row row column">
                  <div>  
-                    {errors.date && <div className="error-message">{errors.date.message}</div>}
+                    {errors.transactionDate && <div className="error-message">{errors.transactionDate.message}</div>}
                     <div className="input-component">
                         <label htmlFor='date-input' className="label-date label">Date:</label>
-                        <input type="date" placeholder='Select Date' style={errors.date?{border:"1px solid red"}:{}} className="input" id="date-input" {...register("date", {required:'This is required field',valueAsDate:true})}/>
+                        <input type="date" placeholder='Select Date' style={errors.transactionDate?{border:"1px solid red"}:{}} className="input" id="date-input" {...register("transactionDate", {required:'This is required field',valueAsDate:false})}/>
                     </div>
                 </div> 
                 <div>
-                    {errors.amount && <div className="error-message">{errors.amount.message}</div>}
+                    {errors.amount && <div className="error-message">{errors.transactionAmount.message}</div>}
                     <div className="input-component">
                         <label htmlFor='amount-input' className="label-amount label">Amount:</label>
-                        <input type="number" placeholder='Type amount in RS' style={errors.amount?{border:"1px solid red"}:{}} className="amount-input input" id="amount-input" {...register("amount",{required:'This is required field',min:{value:0,message:'Amount cannot be less than zero'},valueAsNumber:true}   )}/>
+                        <input type="number" placeholder='Type amount in RS' style={errors.transactionAmount?{border:"1px solid red"}:{}} className="amount-input input" id="amount-input" {...register("transactionAmount",{required:'This is required field',min:{value:0,message:'Amount cannot be less than zero'},valueAsNumber:true}   )}/>
                     </div>
                 </div>
             </div>

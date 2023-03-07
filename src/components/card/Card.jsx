@@ -14,7 +14,7 @@ const Card = (prop) => {
             return val;
         } 
         val = getTotalExpenseData();
-        return val}
+        return val;}
     );
 
     return (
@@ -22,7 +22,7 @@ const Card = (prop) => {
             <h3 className="card-header">{prop.header}</h3>
             <div className="card-details-container">
                 <h2 className="card-currency-units">Rs</h2>
-                <p className="card-amount">{data.data}</p>
+                <p className="card-amount">{data?.data}</p>
             </div>
         </div>
     )

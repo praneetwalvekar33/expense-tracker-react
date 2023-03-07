@@ -16,4 +16,8 @@ export const getTotalExpenseData = async() => {
     return await transactionApi.get("/totalExpense");
 }
 
+export const addNewUserTransaction = async(transaction) => {
+    await transactionApi.post("/transactions",transaction);
+}
+
 export default transactionApi;
