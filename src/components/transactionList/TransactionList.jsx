@@ -6,13 +6,15 @@ import UserTransactionEntry from '../userTransactionEntry/UserTransactionEntry';
 
 const TransactionList = () =>{
     const {data} = useQuery(["transactionData"],()=> getTransactionData());
+    let no = 0;
 
     return(
         <div>
             {data?.map((transactionEntry)=>{
+                no++;
                 return (
-                    <UserTransactionEntry transaction={transactionEntry} key={transactionEntry.id}/>
-                );
+                    <UserTransactionEntry transaction={transactionEntry} num={no} key={transactionEntry.id}/>              
+                 );
             })}
         </div>
     );
