@@ -21,10 +21,18 @@
     color: aliceblue;
 }
 
-.name-margin{
-    margin-right: 8rem;
+.width-date{
+    width: 5.5rem;
 }
 
-.margin-right{
-    margin-right: 3rem;
+.width-name{
+    width: 10rem;
+}
+
+.width{
+    width: 2rem;
+}
+
+.align-text{
+    text-align: center;
 }
