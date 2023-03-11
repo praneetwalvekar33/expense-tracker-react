@@ -14,11 +14,12 @@ const App = () => {
 
     const client = new QueryClient();
     const [transactionAddedResponse,setTransactionAddedResponse] = useState(false);
+    const [transactionSucess,setTransactionSucess] = useState(false);
     
     return (
         <div className="app"> 
             <QueryClientProvider client={client}>
-                <transactionAddedContext.Provider value={transactionAddedResponse}>
+                <transactionAddedContext.Provider value={{transactionAddedResponse,transactionSucess}}>
                     <ResponseSnackbar/>
                 </transactionAddedContext.Provider>
                 <Header/>
@@ -26,7 +27,7 @@ const App = () => {
                     <Card header="Total Balance" value={1500} balOrExp={true}/>
                     <Card header="Total Expense" value={34000} balOrExp={false}/>
                 </div>
-                <transactionAddedContext.Provider value={setTransactionAddedResponse}>
+                <transactionAddedContext.Provider value={{setTransactionAddedResponse,setTransactionSucess}}>
                     <AddNewTransactionForm className="new-transaction" />
                 </transactionAddedContext.Provider>
                 <TransactionEntryHeader />
