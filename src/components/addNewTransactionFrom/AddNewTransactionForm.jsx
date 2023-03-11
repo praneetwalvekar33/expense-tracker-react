@@ -22,16 +22,22 @@ const AddNewTransactionForm = () => {
         onSuccess:()=>{
             queryClient.invalidateQueries();
             reset();
-            setTransactionAddedState(true);
+            setTransactionSucess(true);
+            setTransactionAddedResponse(true);
             setTimeout(()=>{
-                setTransactionAddedState(false);
+                setTransactionAddedResponse(false);
             },3000)
-            
+        },
+        onError:()=>{
+            setTransactionSucess(false);
+            setTransactionAddedResponse(true);
+            setTimeout(()=>{
+                setTransactionAddedResponse(false);
+            },3000)
         }
     });
 
-    const setTransactionAddedState = useContext(transactionAddedContext);
-
+    const {setTransactionAddedResponse,setTransactionSucess} = useContext(transactionAddedContext);
     const submit = (data) =>{
         console.log(data);
         addMutation.mutate(data);
@@ -68,7 +74,7 @@ const AddNewTransactionForm = () => {
                     </div>
                 </div> 
                 <div>
-                    {errors.amount && <div className="error-message">{errors.transactionAmount.message}</div>}
+                    {errors.transactionAmount && <div className="error-message">{errors.transactionAmount.message}</div>}
                     <div className="input-component">
                         <label htmlFor='amount-input' className="label-amount label">Amount:</label>
                         <input type="number" placeholder='Type amount in RS' style={errors.transactionAmount?{border:"1px solid red"}:{}} className="amount-input input" id="amount-input" {...register("transactionAmount",{required:'This is required field',min:{value:0,message:'Amount cannot be less than zero'},valueAsNumber:true}   )}/>
