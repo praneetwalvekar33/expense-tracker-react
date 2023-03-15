@@ -7,7 +7,7 @@ import { transactionAddedContext } from "../../utils/contextUtil"
 import "./AddNewTransactionForm.css"
 
 const AddNewTransactionForm = () => {
-    const {register,handleSubmit,reset,formState:{ errors }} = useForm({
+    const {register,handleSubmit,reset,setValue,formState:{ errors }} = useForm({
         defaultValues: {
             transactionsName:"",
             transactionDate:"",
@@ -51,7 +51,15 @@ const AddNewTransactionForm = () => {
                     {errors.transactionName && <div className="error-message">{errors.transactionName.message}</div>}
                     <div className="input-component">
                         <label htmlFor='name-input' className="name-label label">Name:</label>
-                        <input type="text" placeholder='Type Name here' style={errors.transactionName?{border:"1px solid red"}:{}} className="input" id="name-input" {...register("transactionName", {required: 'This is a required field', pattern:{value:/^[A-Za-z]+$/i,message:'You can only enter alphabets'}})}/>
+                        <input type="text" placeholder='Type Name here' style={errors.transactionName?{border:"1px solid red"}:{}} className="input" id="name-input" {...register("transactionName", {required: 'This is a required field', pattern:{value:/^[A-Za-z\s]+$/i,message:'You can only enter alphabets'},onBlur:(e)=>{
+                            let inputValue = e.target.value.trim();
+                            if(inputValue !== ''){
+                                inputValue = inputValue.replace(/\s{2,}/g,' ');
+                                console.log(inputValue);
+                            }
+
+                            setValue("transactionName",inputValue);
+                        }})}/>
                     </div>
                 </div>
                 <div>
@@ -82,7 +90,7 @@ const AddNewTransactionForm = () => {
                 </div>
             </div>
 
-            <input type="submit" value="Add Transaction" className="submit-input"/>
+            <input disabled={addMutation.isLoading} type="submit" value="Add Transaction" className="submit-input"/>
         </form>
     )
 }
