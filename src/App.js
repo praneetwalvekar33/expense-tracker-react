@@ -9,6 +9,7 @@ import TransactionEntryHeader from './components/transactionEntryHeader/Transact
 import ResponseSnackbar from './components/responseSnackbar/ResponseSnackbar';
 import './App.css'
 import TransactionList from './components/transactionList/TransactionList';
+import Footer from './components/footer/Footer';
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
                 </transactionAddedContext.Provider>
                 <TransactionEntryHeader />
                 <TransactionList/>
+                <Footer/>
             </QueryClientProvider>
         </div>
     )
