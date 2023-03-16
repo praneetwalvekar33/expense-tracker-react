@@ -1,0 +1,21 @@
+.footerContainer{
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.footerHead{
+    color:#7AC0D7;
+    text-align:center;
+    margin: 0;
+}
+
+.footerLinks{
+    display: flex;
+    justify-content: center;
+    margin:0;
+}
+
+.margin{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}

@@ -55,7 +55,6 @@ const AddNewTransactionForm = () => {
                             let inputValue = e.target.value.trim();
                             if(inputValue !== ''){
                                 inputValue = inputValue.replace(/\s{2,}/g,' ');
-                                console.log(inputValue);
                             }
 
                             setValue("transactionName",inputValue);
